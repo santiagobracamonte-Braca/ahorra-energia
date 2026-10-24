@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Formulario GET para conocer los hábitos de consumo de energía del hogar.">
+  <title>Encuesta de hábitos | Ahorra energía</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/estilos.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container py-3">
+    <header class="site-header p-4 mb-4 text-white rounded">
+      <h1 class="h2">Ahorra energía en casa</h1>
+      <p class="lema mb-3">Proyecto académico · Ingeniería Web I · IU Digital de Antioquia</p>
+      <nav aria-label="Navegación principal" class="site-nav nav nav-pills flex-wrap gap-2 mb-3">
+        <a class="nav-link" href="index.html">Inicio</a>
+        <a class="nav-link" href="equipos.html">Equipos</a>
+        <a class="nav-link" href="mi-factura.html">Mi factura</a>
+        <a class="nav-link active" aria-current="page" href="encuesta.html">Encuesta</a>
+        <a class="nav-link" href="registro.html">Registrar equipo</a>
+      </nav>
+    </header>
+
+    <main>
+      <h2>Encuesta de hábitos de consumo</h2>
+      <p>
+        Esta encuesta recoge las rutinas de uso de energía en el hogar para identificar oportunidades de
+        ahorro. Los datos se envían por el método GET y aparecen en la URL al enviar el formulario.
+      </p>
+
+      <form action="encuesta.html" method="get">
+        <fieldset class="border rounded p-3 mb-4">
+          <legend class="float-none w-auto px-2">Información general</legend>
+          <div class="mb-3">
+            <label class="form-label" for="nombre">Nombre o seudónimo</label>
+            <input class="form-control" type="text" id="nombre" name="nombre" required maxlength="60" autocomplete="name">
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="correo">Correo electrónico</label>
+            <input class="form-control" type="email" id="correo" name="correo" required autocomplete="email">
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="personas">Personas que viven en el hogar (1 a 20)</label>
+            <input class="form-control" type="number" id="personas" name="personas" min="1" max="20" required>
+          </div>
+        </fieldset>
+
+        <fieldset class="border rounded p-3 mb-4">
+          <legend class="float-none w-auto px-2">Uso de energía</legend>
+          <div class="mb-3">
+            <label class="form-label" for="horas">Horas diarias promedio con equipos encendidos:</label>
+            <output class="form-label fw-semibold" id="horasValor" for="horas">5</output>
+            <input class="form-range" type="range" id="horas" name="horas" min="0" max="24" value="5"
+              oninput="document.getElementById('horasValor').value=this.value">
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="equipo">Equipo que más utiliza</label>
+            <select class="form-select" id="equipo" name="equipo" required>
+              <option value="" selected disabled>Selecciona una opción</option>
+              <option value="nevera">Nevera</option>
+              <option value="ventilador">Ventilador</option>
+              <option value="televisor">Televisor</option>
+              <option value="portatil">Portátil</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+
+          <p class="form-label">¿Desconectan los cargadores cuando no se usan?</p>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" id="cargadoresSi" name="cargadores" value="si" required>
+            <label class="form-check-label" for="cargadoresSi">Sí</label>
+          </div>
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="radio" id="cargadoresNo" name="cargadores" value="no">
+            <label class="form-check-label" for="cargadoresNo">No</label>
+          </div>
+
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" id="bombillos" name="habitos[]" value="led">
+            <label class="form-check-label" for="bombillos">Utilizamos bombillos LED</label>
+          </div>
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" id="lavado" name="habitos[]" value="carga-completa">
+            <label class="form-check-label" for="lavado">Lavamos con cargas completas</label>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label" for="propuesta">¿Qué cambio ayudaría más a ahorrar energía en tu hogar?</label>
+            <textarea class="form-control" id="propuesta" name="propuesta" rows="4" required maxlength="500"></textarea>
+          </div>
+        </fieldset>
+
+        <button class="btn btn-primary" type="submit">Enviar encuesta</button>
+        <button class="btn btn-outline-secondary" type="reset">Limpiar</button>
+      </form>
+
+      <p class="mt-3">
+        Al enviar, el método GET muestra los campos en la URL para comprobar el funcionamiento del formulario.
+        Por tratarse de un ejercicio académico, no ingreses información sensible ni datos de tu cuenta.
+      </p>
+    </main>
+
+    <footer class="site-footer border-top mt-5 pt-3">
+      <p>Proyecto académico · Ingeniería Web I · IU Digital de Antioquia.</p>
+      <p>
+        Fuentes de consulta:
+        <a href="https://www.xm.com.co" target="_blank" rel="noopener noreferrer">XM</a> ·
+        <a href="https://validator.w3.org/nu/" target="_blank" rel="noopener noreferrer">Validador W3C</a>
+      </p>
+    </footer>
+  </div>
+</body>
+
+</html>
